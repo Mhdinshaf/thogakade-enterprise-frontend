@@ -64,27 +64,39 @@
   </div>
 
   <div class="mt-10 overflow-hidden rounded-2xl border border-slate-100">
-    <table class="w-full text-left">
-      <thead class="bg-slate-900 text-white">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th class="p-4 text-xs font-black uppercase tracking-widest">ID</th>
-          <th class="p-4 text-xs font-black uppercase tracking-widest">Title & Name</th>
-          <th class="p-4 text-xs font-black uppercase tracking-widest">Location</th>
-          <th class="p-4 text-xs font-black uppercase tracking-widest">Salary</th>
-          <th class="p-4 text-xs font-black uppercase tracking-widest text-center">Action</th>
+            <th scope="col" class="px-4 py-3">ID</th>
+            <th scope="col" class="px-4 py-3">Title</th>
+            <th scope="col" class="px-4 py-3">Name</th>
+            <th scope="col" class="px-4 py-3">Date of Birth</th>
+            <th scope="col" class="px-4 py-3">Address</th>
+            <th scope="col" class="px-4 py-3">Salary</th> 
+            <th scope="col" class="px-4 py-3">Postal Code</th>
+            <th scope="col" class="px-4 py-3">
+                <span class="sr-only">Actions</span>
+            </th>
         </tr>
-      </thead>
-      <tbody class="text-sm text-slate-600 divide-y divide-slate-100">
-        <tr class="hover:bg-slate-50 transition">
-          <td class="p-4 font-bold">C001</td>
-          <td class="p-4">Mr. Kasun Perera</td>
-          <td class="p-4">Colombo, Western (10100)</td>
-          <td class="p-4 font-bold text-slate-800">125,000.00</td>
-          <td class="p-4 text-center">
-            <button class="text-blue-600 hover:underline font-bold">Edit</button>
-          </td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customerList"
+            class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            
+            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{customer.custID}}</td>
+            <td class="px-4 py-3">{{customer.custTitle}}</td>
+            <td class="px-4 py-3">{{customer.custName}}</td>
+            <td class="px-4 py-3">{{customer.dob}}</td> 
+            <td class="px-4 py-3">{{customer.custAddress}}</td>
+            <td class="px-4 py-3">{{customer.salary}}</td>
+            <td class="px-4 py-3">{{customer.postalCode}}</td>
+            
+            <td class="px-4 py-3 flex items-center justify-end">
+                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>
+                <button class="font-medium text-red-600 dark:text-red-500 hover:underline ml-3">Delete</button>
+            </td>
         </tr>
-      </tbody>
-    </table>
+    </tbody>
+</table>
   </div>
 </div>
