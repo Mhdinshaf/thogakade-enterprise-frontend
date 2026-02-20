@@ -1,36 +1,96 @@
-<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-  <h2 class="text-2xl font-bold text-gray-800 mb-6">Manage Registration</h2>
+<div class="space-y-6">
+  <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center mb-8">
+      <div>
+        <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tight">Item Inventory</h2>
+        <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mt-1">Manage Stock & Pricing</p>
+      </div>
+      <span class="bg-emerald-50 text-emerald-600 text-xs font-black px-4 py-2 rounded-full uppercase">Thogakade Inventory</span>
+    </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-    <input type="text" placeholder="ID" class="p-3 border rounded-lg outline-none focus:border-blue-500">
-    <input type="text" placeholder=" Description" class="p-3 border rounded-lg outline-none focus:border-blue-500">
-        <input type="text" placeholder=" Description" class="p-3 border rounded-lg outline-none focus:border-blue-500">
-    <input type="text" placeholder=" Price" class="p-3 border rounded-lg outline-none focus:border-blue-500">
-    <div class="md:col-span-3 flex justify-end gap-2">
-      <button class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">Save</button>
-      <button class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600">Update</button>
-      <button class="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">Delete</button>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      
+      <div class="space-y-1">
+        <label class="text-10px font-black text-slate-400 uppercase ml-1">Item Code</label>
+        <input #itemCode type="text" placeholder="P001" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-50 transition">
+      </div>
+
+      <div class="space-y-1 md:col-span-2">
+        <label class="text-10px font-black text-slate-400 uppercase ml-1">Description</label>
+        <input #description type="text" placeholder="Nestomalt 400g Pack" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 transition">
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-10px font-black text-slate-400 uppercase ml-1">Unit Price (LKR)</label>
+        <input #unitPrice type="number" placeholder="0.00" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 transition">
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-10px font-black text-slate-400 uppercase ml-1">Quantity On Hand</label>
+        <input #qtyOnHand type="number" placeholder="100" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 transition">
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-10px font-black text-slate-400 uppercase ml-1">Pack Size</label>
+        <input #packSize type="text" placeholder="400g / 1kg" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:border-blue-500 transition">
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 pt-4 border-t border-slate-50">
+      <!-- <button (click)="addItem(itemCode.value, description.value, unitPrice.value, qtyOnHand.value, packSize.value)"  -->
+              class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-10 py-3 rounded-2xl shadow-lg shadow-blue-100 transition active:scale-95">
+        Save Item
+      <!-- </button> -->
+      <button class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-8 py-3 rounded-2xl transition">Update</button>
+      <button class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-8 py-3 rounded-2xl transition">Delete</button>
     </div>
   </div>
 
-  <div class="overflow-x-auto">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="p-4 border-b">ID</th>
-          <th class="p-4 border-b">Name/Desc</th>
-          <th class="p-4 border-b">Detail/Price</th>
-          <th class="p-4 border-b">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="hover:bg-gray-50">
-          <td class="p-4 border-b">C001</td>
-          <td class="p-4 border-b">Kasun Perera</td>
-          <td class="p-4 border-b">Colombo</td>
-          <td class="p-4 border-b"><button class="text-blue-600 underline">Edit</button></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="bg-white  shadow-sm border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-separate border-spacing-0">
+        <thead class="bg-slate-50 border-b border-slate-100">
+          <tr>
+            <th class="px-6 py-4 text-10px font-black text-slate-400 uppercase tracking-widest">#</th>
+            <th class="px-6 py-4 text-10px font-black text-slate-400 uppercase tracking-widest">Item Info</th>
+            <th class="px-6 py-4 text-10px font-black text-slate-400 uppercase tracking-widest text-center">Stock</th>
+            <th class="px-6 py-4 text-10px font-black text-slate-400 uppercase tracking-widest">Price</th>
+            <th class="px-6 py-4 text-10px font-black text-slate-400 uppercase tracking-widest text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-50">
+          <!-- <tr *ngFor="let item of itemList; index as i" class="hover:bg-slate-50/50 transition-colors group"> -->
+            <!-- <td class="px-6 py-4 text-sm font-bold text-slate-300">{{i + 1}}</td> -->
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center font-black text-[10px]">
+                  BOX
+                </div>
+                <div>
+                  <!-- <div class="text-sm font-bold text-slate-700">{{item.description}}</div> -->
+                  <!-- <div class="text-10px font-black text-blue-500 uppercase">{{item.itemCode}} | {{item.packSize}}</div> -->
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-center">
+              <!-- <span [class]="item.qtyOnHand < 10 ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-600'"  -->
+                    class="px-3 py-1 rounded-lg font-bold text-xs">
+                <!-- {{item.qtyOnHand}} -->
+              <!-- </span> -->
+            </td>
+            <!-- <td class="px-6 py-4 text-sm font-black text-slate-800"> -->
+              <!-- Rs. {{item.unitPrice}} -->
+            <!-- </td> -->
+            <td class="px-6 py-4 text-right">
+              <button class="text-blue-500 hover:text-blue-700 font-bold text-xs">Edit</button>
+              <button class="text-rose-500 hover:text-rose-700 font-bold text-xs ml-3">Remove</button>
+            </td>
+          <!-- </tr> -->
+          <!-- <tr *ngIf="itemList.length === 0"> -->
+            <td colspan="5" class="p-10 text-center text-slate-400 italic font-medium">No items available in the inventory.</td>
+          <!-- </tr> -->
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
