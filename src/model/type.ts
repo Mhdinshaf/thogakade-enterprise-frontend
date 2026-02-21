@@ -11,5 +11,10 @@ export interface CustomerModel {
 }
 
 export interface ItemModel{
+    itemCode: string;
+    description: string;
+    unitPrice: number;
+    qtyOnHand: number;
+    packSize: string;
 
 }
